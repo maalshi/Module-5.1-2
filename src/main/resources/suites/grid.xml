@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name = "SeleniumGrid" verbose ="1" parallel="false">
+    <test name="SeleniumGrid">
+        <classes>
+            <class name="CarHireTest">
+            </class>
+        </classes>
+    </test>
+</suite>
