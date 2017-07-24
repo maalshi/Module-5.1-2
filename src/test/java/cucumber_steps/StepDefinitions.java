@@ -1,5 +1,6 @@
-package cucumber;
+package cucumber_steps;
 
+import config.WebDriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -7,17 +8,17 @@ import ui.AbstractPage;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import businessobjects.Route;
+import ui.aerlpages.FlightResultsPage;
+import ui.aerlpages.Homepage;
+import utils.AssertUtil;
 
 /**
  * Created by Maryia_Shynkarenka on 7/24/2017.
  */
-public class StepDefinitions extends AbstractPage {
+public class StepDefinitions {
 
-    public WebDriver driver;
-
-    public StepDefinitions(){
-        driver= this.driver;
-    }
+    public WebDriver driver = WebDriverSingleton.getWebDriverInstance();;
+    Homepage homepage;
 
     @When("^I open Aerlingus Homepage$")
     public void open_aerlingus_homepage(){
@@ -27,18 +28,18 @@ public class StepDefinitions extends AbstractPage {
 
     @When ("^I perform a Flight search$")
     public void perform_a__flight_search(){
-        waitElement(By.xpath("//*[@id='origin']/div"));
-        driver.findElement(By.xpath("//*[@id='origin']/div")).click();
-        driver.findElement(By.xpath("//*[@id='origin']/div")).sendKeys("dublin");
-        driver.findElement(By.xpath("//li[contains(@id,'typeahead')][1]")).click();
-        waitElement(By.xpath("//*[@id='dest']/div"));
-        driver.findElement(By.xpath("//*[@id='dest']/div")).sendKeys("paris");
-        driver.findElement(By.xpath("//li[contains(@id,'typeahead')][1]")).click();
+        driver.get("https://www.aerlingus.com/html/en-US/home.html");
+        homepage = new Homepage(driver);
+        homepage.setRoute(new Route("dublin","paris"));
     }
 
     @When("^I press Find Flights button")
     public void press_find_flights_button(){
-        driver.findElement(By.xpath("//button[@data-test-id='test_booker_search']")).click();
+        homepage.clickFindFlightButton();
+        FlightResultsPage flightresults = new FlightResultsPage(driver);
+        AssertUtil.assertEquals(flightresults.getOutboundText(), "Dublin to Paris");
+        AssertUtil.assertEquals(flightresults.getInboundText(), "Paris to Dublin");
+        flightresults.clickContinue();
     }
 
 

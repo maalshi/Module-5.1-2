@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name = "Cucumber test" verbose ="1" parallel="false">
+    <test name="Cucumber test">
+        <classes>
+            <class name="CucumberTest">
+            </class>
+        </classes>
+    </test>
+</suite>
