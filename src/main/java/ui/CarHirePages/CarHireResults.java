@@ -13,9 +13,6 @@ import ui.AbstractPage;
  */
 public class CarHireResults extends AbstractPage{
 
-    WebDriver driver;
-    WebDriverWait wait;
-
     @FindBy(xpath = "//label[text()='Pick-up']/following-sibling::p[@class='ct-break-word']")
     WebElement outboundAirport;
 

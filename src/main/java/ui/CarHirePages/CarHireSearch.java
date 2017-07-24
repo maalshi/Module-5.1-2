@@ -15,9 +15,6 @@ import ui.AbstractPage;
  */
 public class CarHireSearch extends AbstractPage {
 
-    WebDriver driver;
-    WebDriverWait wait;
-
     @FindBy(id = "pickupLocation")
     WebElement pickUpField;
 
@@ -33,7 +30,7 @@ public class CarHireSearch extends AbstractPage {
     @FindBy(id = "returnDate")
     WebElement endDate;
 
-    @FindBy(xpath = "//td[@data-enabled=\"true\"][2]")
+    @FindBy(xpath = "//td[@data-enabled=\"true\"][3]")
     WebElement inboundDate;
 
     @FindBy(id = "searchCarsFormBtn-searchcars")

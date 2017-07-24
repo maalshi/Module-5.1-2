@@ -7,13 +7,14 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 //Factory
 public class WebDriverFactory {
-        public WebDriver getDriver(){
+    public WebDriver getDriver(){
+        System.setProperty("webdriver.gecko.driver", "D:\\webdrivers\\browsers\\geckodriver.exe");
+        System.setProperty("webdriver.chrome.driver","D:\\webdrivers\\browsers\\chromedriver.exe");
 
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
         if(System.getProperty("browser").equals("firefox")) {
-            return new FirefoxDriver(DesiredCapabilities.firefox());
+            return new FirefoxDriver();
         } else if(System.getProperty("browser").equals("chrome")){
-            return new ChromeDriver(DesiredCapabilities.chrome());
+            return new ChromeDriver();
         }
         return new FirefoxDriver();
     }

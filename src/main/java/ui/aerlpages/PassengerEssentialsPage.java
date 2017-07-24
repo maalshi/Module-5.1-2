@@ -13,9 +13,6 @@ import ui.AbstractPage;
  */
 public class PassengerEssentialsPage extends AbstractPage {
 
-    WebDriver driver;
-    WebDriverWait wait;
-
     @FindBy(xpath = "//div[@id='test-left']//div[@class='relative ng-scope'][1]//div[contains(@class,'head-section')]//span[@class='ng-binding']")
     WebElement OutboundFlight;
 
